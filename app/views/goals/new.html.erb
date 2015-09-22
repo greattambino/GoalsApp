@@ -1,0 +1,21 @@
+<h1>Add New Goal</h1>
+
+<form action='<%= goals_url %>' method="POST">
+  <%= auth_token %>
+  <label>
+    Title
+    <input type="text" name="goal[title]" value='<%= @goal.title %>'>
+  </label>
+  <br>
+  <label for='status_pending'>Pending</label>
+  <input type="radio" name="goal[status]" id='status_pending' value='PENDING'>
+  <label for='status_complete'>Complete</label>
+  <input type="radio" name="goal[status]" id='status_complete' value='COMPLETE'>
+  <br>
+  <label for='public_true'>Public</label>
+  <input type="radio" name="goal[public]" id='public_true' value="true" >
+  <label for='public_false'>Private</label>
+  <input type="radio" name="goal[public]" id='public_false' value="false">
+  <br>
+  <input type="submit" value="Add Goal">
+</form>

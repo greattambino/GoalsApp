@@ -27,7 +27,7 @@ feature "the signup process" do
   feature "logging in" do
     scenario "shows username on the homepage after login" do
       visit new_session_url
-      user = FactoryGirl.build(:user)
+      user = FactoryGirl.create(:user)
       fill_in "Username", with: user.username
       fill_in "Password", with: user.password
       click_on "Log In"
@@ -39,13 +39,14 @@ feature "the signup process" do
   feature "logging out" do
     scenario "begins with logged out state" do
       visit goals_url
-      click_button "Add Goal"
-      expect(current_path).to eq(new_session_url)
+      expect(page).to_not have_content("Add Goal")
+      click_on "Log In"
+      expect(current_path).to eq(new_session_path)
     end
 
     scenario "doesn't show username on the homepage after logout" do
       visit new_session_url
-      user = FactoryGirl.build(:user)
+      user = FactoryGirl.create(:user)
       fill_in "Username", with: user.username
       fill_in "Password", with: user.password
       click_on "Log In"

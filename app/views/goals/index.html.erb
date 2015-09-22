@@ -1,0 +1,15 @@
+<% if !current_user %>
+  <%= link_to "Log In", new_session_url %> or
+  <%= link_to "Sign Up", new_user_url %>
+<% end %>
+
+<h1>Goals! Goals! Goals!</h1>
+
+<% if current_user %>
+  <h2>Your Goals</h2>
+  <%= link_to "Add Goal", new_goal_url %><br><br>
+  <%= render current_user.goals %>
+<% end %>
+
+<h2>Other Users' Goals</h2>
+<%=  render partial: "goals/goal", collection: @goals, as: :goal %>

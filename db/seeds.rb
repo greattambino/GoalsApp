@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+5.times do
+  FactoryGirl.create(:user)
+end
+
+User.all.each do |user|
+  FactoryGirl.create(:goal, user_id: user.id)
+  FactoryGirl.create(:goal, user_id: user.id)
+end

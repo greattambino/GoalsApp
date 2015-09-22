@@ -1,0 +1,7 @@
+<h1><%= @goal.title %></h1>
+
+This goal is <b><%= @goal.status.downcase %></b> and <b><%= @goal.public ? "public" : "private" %></b>.
+
+<br><br>
+
+<%= link_to "All Goals", goals_url %>
